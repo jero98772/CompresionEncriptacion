@@ -1,10 +1,52 @@
 import steap_by_steap
-from PIL import Image
-
 import random
 from math import gcd
+from PIL import Image
 
 chars2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 "
+def caesar_encrypt_image(input_image_path, output_image_path, key):
+    # Open the image
+    img = Image.open(input_image_path)
+    # Convert the image to RGB (if it's not already in that format)
+    img = img.convert('RGB')
+    pixels = img.load()
+
+    # Apply Caesar cipher on each pixel's RGB values
+    for i in range(img.width):
+        for j in range(img.height):
+            r, g, b = pixels[i, j]
+            # Encrypt each channel (R, G, B)
+            r_encrypted = (r + key) % 256
+            g_encrypted = (g + key) % 256
+            b_encrypted = (b + key) % 256
+            # Set the encrypted pixel value
+            pixels[i, j] = (r_encrypted, g_encrypted, b_encrypted)
+
+    # Save the encrypted image
+    img.save(output_image_path)
+    print(f"Image encrypted and saved to {output_image_path}")
+
+def caesar_decrypt_image(input_image_path, output_image_path, key):
+    # Open the encrypted image
+    img = Image.open(input_image_path)
+    pixels = img.load()
+
+    # Apply reverse Caesar cipher (decryption) on each pixel's RGB values
+    for i in range(img.width):
+        for j in range(img.height):
+            r, g, b = pixels[i, j]
+            # Decrypt each channel (R, G, B)
+            r_decrypted = (r - key) % 256
+            g_decrypted = (g - key) % 256
+            b_decrypted = (b - key) % 256
+            # Set the decrypted pixel value
+            pixels[i, j] = (r_decrypted, g_decrypted, b_decrypted)
+
+    # Save the decrypted image
+    img.save(output_image_path)
+    print(f"Image decrypted and saved to {output_image_path}")
+
+
 
 def publicKeyE(fi):
 	e = 0
@@ -100,13 +142,22 @@ def text(message,rust=1):
 	print(hdecompresed)
 
 def image():
+	inimg="1.png"
+	outimg="ans.png"
+	r=0.23
+	steap_by_steap.CompressImageFFT(inimg,outimg,r)
+	# Example usage:
+	key = 158 # Choose a shift key
+	input_image = inimg#'outimg.png'  # Replace with your image path
+	encrypted_image = 'encrypted_image.png'
+	decrypted_image = 'decrypted_image.png'
 
+	# Encrypt the image
+	caesar_encrypt_image(input_image, encrypted_image, key)
 
-    inimg="1.jpg"
-    outimg="ans.jpg"
-    r=0.99
-    steap_by_steap.CompressImageFFT(inimg,outimg,r)
-    
+	# Decrypt the image
+	caesar_decrypt_image(encrypted_image, decrypted_image, key)
+
 
 #text("mi mama me lava la ropa")
 #binary("10101010111000111000111")
