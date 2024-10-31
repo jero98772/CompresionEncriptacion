@@ -1,7 +1,3 @@
-Here's an improved version of the README for your project, focusing on clarity, structure, and grammar.
-
----
-
 # Compression & Encryption Project
 
 This project demonstrates the impact of compression and encryption order on different types of files, utilizing several compression and encryption algorithms.
@@ -61,6 +57,15 @@ Yes, the effectiveness of compression and encryption can depend on the file type
   
 - **Image FFT and Caesar Cipher**: We applied FFT to images followed by Caesar encryption. The Caesar cipher, while simple, added a layer of obfuscation without significantly increasing the image size, making it a suitable option for demonstration purposes.
 
+
 ### Summary
 
 This project demonstrates that the order and choice of compression and encryption algorithms matter and depend on the file type.
+
+The order of compression and encryption does not depend on the file type itself, but rather on its content. For example, when encrypting text, we could use Huffman compression to reduce the size significantly. However, if we’re working with a book like *Don Quixote*, where there aren’t many repeated words, compression won’t be as effective. In this case, we might compress the plain text using Huffman and then encrypt it with RSA. The RSA encryption generally increases the file size because it replaces characters with large numbers (often over 1000) and introduces patterns within these numbers. Therefore, compressing an already encrypted file won’t guarantee a smaller file size.
+
+Alternatively, we could consider XOR encryption combined with LZW compression, which compresses by grouping patterns. In binary files, we often find bit groups that represent meaningful information (like compiled files), as opposed to random sequences of 1s and 0s. In this structured scenario, LZW compression would be effective, and applying XOR encryption afterward would not interfere with the compression. However, if the file type were changed to plain text, the order of compression and encryption would indeed impact the result.
+
+In cases like FFT (Fast Fourier Transform) compression combined with Caesar cipher encryption, the order does not affect the outcome, though this method is impractical and mostly for aesthetic purposes.
+
+In summary, whether compression and encryption order matters depends on the specific content of the file.
