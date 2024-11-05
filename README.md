@@ -2,6 +2,12 @@
 
 This project demonstrates the impact of compression and encryption order on different types of files, utilizing several compression and encryption algorithms.
 
+Simón Gómez
+Manuela Tolosa 
+Daniel Arango
+Pedro  Cárdenas
+Jaime Uribe
+
 ### Libraries
 
 The project uses the `steap-by-steap` library for compression and encryption algorithms. Install it via pip:
@@ -60,7 +66,7 @@ Yes, the effectiveness of compression and encryption can depend on the file type
 
 ### Summary
 
-This project demonstrates that the order and choice of compression and encryption algorithms matter and depend on the file type.
+This project demonstrates that the order and choice of compression and encryption algorithms matter and depend on the content of file .
 
 The order of compression and encryption does not depend on the file type itself, but rather on its content. For example, when encrypting text, we could use Huffman compression to reduce the size significantly. However, if we’re working with a book like *Don Quixote*, where there aren’t many repeated words, compression won’t be as effective. In this case, we might compress the plain text using Huffman and then encrypt it with RSA. The RSA encryption generally increases the file size because it replaces characters with large numbers (often over 1000) and introduces patterns within these numbers. Therefore, compressing an already encrypted file won’t guarantee a smaller file size.
 
