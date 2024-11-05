@@ -1,12 +1,12 @@
 # Compression & Encryption Project
 
 This project demonstrates the impact of compression and encryption order on different types of files, utilizing several compression and encryption algorithms.
-
-Simón Gómez
-Manuela Tolosa 
-Daniel Arango
-Pedro  Cárdenas
-Jaime Uribe
+    
+    Simón Gómez
+    Manuela Tolosa 
+    Daniel Arango
+    Pedro  Cárdenas
+    Jaime Uribe
 
 ### Libraries
 
